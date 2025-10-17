@@ -15,9 +15,14 @@ jobs:
     steps: # список шагов, которые надо выполнить
       # экшен — выполняет какую-то задачу
       # checkout — клонирует репозиторий
-      - uses: actions/checkout@v4
-      # run – произвольная bash-команда
-      # ls -la выведет содержимое текущего репозитория
-      - run: make setup
-      - run: make test
-      - run: make lint
+      - name: Checkoutheckout repo
+        uses: actions/checkout@v4
+      # run – произвольная bash-команда 
+      - name: install build
+        run: make setup
+
+      - name: start test
+        run: make test
+        
+      - name: start test lint
+        run: make lint
