@@ -12,9 +12,6 @@ jobs:
   build:
     # операционная система для работы воркфлоу
     runs-on: ubuntu-latest
-    steps:
-      - name: install Node
-        uses: actions/setup-node@v6
 
     steps: # список шагов, которые надо выполнить
       # экшен — выполняет какую-то задачу
@@ -22,6 +19,9 @@ jobs:
       - name: Checkoutheckout repo
         uses: actions/checkout@v4
       # run – произвольная bash-команда 
+      - name: install Node
+        uses: actions/setup-node@v6
+
       - name: install build
         run: make setup
 
@@ -31,6 +31,5 @@ jobs:
       - name: start test lint
         run: make lint
 
-    steps:
       - name: line output
         uses: hexlet-components/hello-from-hexlet-action@release
